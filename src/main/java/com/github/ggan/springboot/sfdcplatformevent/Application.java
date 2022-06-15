@@ -44,8 +44,8 @@ public class Application {
 	@Autowired
 	private ApplicationContext context;
 
-	@Autowired
-	BuildProperties buildProperties;
+//	@Autowired
+//	BuildProperties buildProperties;
 
 	private static Logger logger = LoggerFactory.getLogger(Application.class);
 
@@ -64,8 +64,7 @@ public class Application {
 
 		// start platform event subscription
 		logger.info("starting salesforce platform event subscription");
-		for (int i = 0; i < salesforceEventList.length; i++) {
-			String event = salesforceEventList[i];
+		for (String event : salesforceEventList) {
 			beanFactory.getBean(TopicSubscription.class, emp, event);
 			logger.info("created new salesforce platform event subscription " + event);
 		}
